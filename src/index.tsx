@@ -3,13 +3,44 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloClient, ApolloProvider, gql, InMemoryCache } from '@apollo/client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Titles from './routes/titles';
+import Authors from './routes/authors';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/',
+  cache: new InMemoryCache(),
+})
+
+client.query({
+  query: gql`
+    query GetBooks {
+      books {
+        title
+        author
+      }
+    }
+  `
+}).then((result) => console.log(result))
+
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <ApolloProvider client={client}>
+            <App />
+          </ApolloProvider>}>
+        <Route path="/titles" element={<Titles />} />
+        <Route path="/authors" element={<Authors />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
