@@ -12,6 +12,7 @@ export default function App() {
         borderBottom: "solid 1px",
         paddingBottom: "1rem",
       }}>
+        <Link to="/books">Books</Link> | {" "}
         <Link to="/titles">Titles</Link> |{" "}
         <Link to="/authors">Authors</Link>
       </nav>
@@ -42,6 +43,7 @@ function Display() {
         borderBottom: "solid 1px",
         paddingBottom: "1rem",
       }}>
+        <Link to="/books">Books</Link> | {" "}
         <Link to="/titles">Titles</Link> |{" "}
         <Link to="/authors">Authors</Link>
       </nav>

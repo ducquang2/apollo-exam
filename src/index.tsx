@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { ApolloClient, ApolloProvider, gql, InMemoryCache } from '@apollo/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Titles from './routes/titles';
+import Books from './routes/books';
 import Authors from './routes/authors';
 
 const root = ReactDOM.createRoot(
@@ -34,6 +35,7 @@ root.render(
       <ApolloProvider client={client}>
         <Routes>
           <Route path="/" element={<App />}>
+            <Route path="/books" element={<Books />} />
             <Route path="/titles" element={<Titles />} />
             <Route path="/authors" element={<Authors />} />
           </Route>
