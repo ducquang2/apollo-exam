@@ -7,7 +7,15 @@ export default function App() {
     <div>
       <h2>My first Apollo app 🚀</h2>
       <br />
-      <DisplayLocations />
+      {/* <DisplayLocations /> */}
+      <nav style={{
+        borderBottom: "solid 1px",
+        paddingBottom: "1rem",
+      }}>
+        <Link to="/titles">Titles</Link> |{" "}
+        <Link to="/authors">Authors</Link>
+      </nav>
+      <Outlet />
     </div>
   );
 }
@@ -21,7 +29,7 @@ const GET_TITLES = gql`
   }
 `;
 
-function DisplayLocations() {
+function Display() {
   const { loading, error, data } = useQuery(GET_TITLES);
 
   if (loading) return <p>Loading...</p>;
@@ -31,13 +39,13 @@ function DisplayLocations() {
     <div>
       <h1>Books:</h1>
       <nav style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}>
-          <Link to="/titles">Titles</Link> |{" "}
-          <Link to="/authors">Authors</Link>
-        </nav>
-        <Outlet />
+        borderBottom: "solid 1px",
+        paddingBottom: "1rem",
+      }}>
+        <Link to="/titles">Titles</Link> |{" "}
+        <Link to="/authors">Authors</Link>
+      </nav>
+      <Outlet />
       {/* <ul>
         {data.books.map((item: any, index: any) => <li key={index}> {item.title} </li>)}
       </ul> */}

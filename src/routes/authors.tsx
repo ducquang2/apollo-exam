@@ -9,16 +9,16 @@ export default function Authors() {
     );
 }
 
-const GET_TITLES = gql`
+const GET_AUTHORS = gql`
 query GetTitles {
     books {
-        title
+        author
     }
 }
 `
 
 function DisplayAuthors() {
-    const { loading, error, data } = useQuery(GET_TITLES);
+    const { loading, error, data } = useQuery(GET_AUTHORS);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error ${error.message}</p>

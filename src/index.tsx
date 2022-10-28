@@ -31,15 +31,14 @@ client.query({
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={
-          <ApolloProvider client={client}>
-            <App />
-          </ApolloProvider>}>
-        <Route path="/titles" element={<Titles />} />
-        <Route path="/authors" element={<Authors />} />
-        </Route>
-      </Routes>
+      <ApolloProvider client={client}>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/titles" element={<Titles />} />
+            <Route path="/authors" element={<Authors />} />
+          </Route>
+        </Routes>
+      </ApolloProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
