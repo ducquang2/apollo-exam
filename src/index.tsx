@@ -18,10 +18,32 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 })
 
+// client.writeQuery({
+//   query: gql`
+//     query WriteBook($title: String!) {
+//       books(title: $title) {
+//         title
+//         author
+//       }
+//     }
+//   `,
+//   data: {
+//     books: {
+//       __typename: 'Book',
+//       title: 'Test',
+//       author: 'Alo'
+//     }
+//   },
+//   variables: {
+//     title: 'Test'
+//   }
+// })
+
 client.query({
   query: gql`
     query GetBooks {
       books {
+        id
         title
         author
       }
